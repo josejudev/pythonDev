@@ -4,20 +4,19 @@ from driveFiles.mainDrive import Create_Service
 from googleapiclient.http import MediaFileUpload
 from getFiles import *
 from animate import *
-import pandas as pd
 import json, requests
 from apiclient import errors
 
 
 #!crear servicio
-CLIENT_SECRET_FILE = "./driveFiles/api_drive.json"
+CLIENT_SECRET_FILE = "/home/joseju/Documentos/pythonDev/driveFiles/api_drive.json"
 API_NAME = "drive"
 API_VERSION = "v3"
 SCOPES = ["https://www.googleapis.com/auth/drive"]
 
 service = Create_Service(CLIENT_SECRET_FILE, API_NAME, API_VERSION, SCOPES)
 
-with open('./driveFiles/data_file.json') as f:
+with open('/home/joseju/Documentos/pythonDev/driveFiles/data_file.json') as f:
     data = json.load(f)
 
 for arch in data["Files"]:

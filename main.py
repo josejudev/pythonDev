@@ -5,7 +5,7 @@ from animate import *
 import json, time
 
 
-CLIENT_SECRET_FILE = "./driveFiles/api_drive.json"
+CLIENT_SECRET_FILE = "/home/joseju/Documentos/pythonDev/driveFiles/api_drive.json"
 API_NAME = "drive"
 API_VERSION = "v3"
 SCOPES = ["https://www.googleapis.com/auth/drive"]
@@ -17,7 +17,7 @@ animates()
 try :
     folder = service.files().create(body={'name': zipName, 'mimeType': 'application/vnd.google-apps.folder'},
                                     fields='id').execute()
-    print("\n ✓ Folder created successfully")
+    print("\n ✓ Folder created successfully Cloud")
     time.sleep(2)
 except Exception as e:
     print(f"Error:{ e.strerror}")
@@ -25,7 +25,7 @@ except Exception as e:
 #! =>Subir archivo comprimido a Google Drive
 FOLDER_ID = folder.get('id')
 FILE_NAMES = [zipName]
-MIME_TYPES = ["application/zip"]
+MIME_TYPES = ["application/pdf"]
 try:
     for file_name, mime_type in zip(FILE_NAMES, MIME_TYPES):
         file_metadata = {
@@ -51,7 +51,7 @@ try :
             'id_file': folder.get('id'),
             'data_create': zipName})
 
-    with open('./driveFiles/data_file.json', 'w') as file:
+    with open('/home/joseju/Documentos/pythonDev/driveFiles/data_file.json', 'w') as file:
             json.dump(data, file, indent=4)
     print("\n ✓ Json file created successfully")
     time.sleep(2)
